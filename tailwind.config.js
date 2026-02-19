@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
     content: [
@@ -10,28 +9,29 @@ export default {
       fontFamily: {
         sans: ['"Alata"', 'sans-serif'],
         serif: ['"Lora"', 'serif'],
+        roboto: ['"Roboto"', 'sans-serif'],
       },
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
-  			background: '#18191A', // Extracted
-  			foreground: '#E4E6EB', // Extracted
+  			background: '#18191A', // Global bg
+  			foreground: '#E4E6EB', // Global text
   			primary: {
-  				DEFAULT: '#8ABECC', // Extracted
+  				DEFAULT: '#8ABECC', // Primary accent
   				foreground: '#18191A'
   			},
   			secondary: {
-  				DEFAULT: '#0D6EFD', // Extracted
+  				DEFAULT: '#0D6EFD',
   				foreground: '#FFFFFF'
   			},
+        muted: {
+          DEFAULT: '#242526', // Lighter bg for cards/sections
+          foreground: '#B0B3B8' // Secondary text
+        },
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
-  			},
-  			muted: {
-  				DEFAULT: '#242526', // Slightly lighter than bg
-  				foreground: '#B0B3B8'
   			},
   			accent: {
   				DEFAULT: '#8ABECC',
@@ -42,7 +42,7 @@ export default {
   				foreground: '#E4E6EB'
   			},
   			card: {
-  				DEFAULT: 'rgba(255, 255, 255, 0.05)', // Extracted
+  				DEFAULT: 'rgba(255, 255, 255, 0.05)',
   				foreground: '#E4E6EB'
   			}
   		},

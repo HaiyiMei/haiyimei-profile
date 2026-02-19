@@ -33,7 +33,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4",
         isScrolled
-          ? "bg-[#18191A]/95 backdrop-blur-sm shadow-md py-2" // Matches site dark theme
+          ? "bg-background/95 backdrop-blur-sm shadow-md py-2" // Matches site dark theme
           : "bg-transparent"
       )}
     >
@@ -48,12 +48,12 @@ export function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          {["About", "Experience", "Projects", "Publications"].map((item) => (
+          {["About", "Experience", "Projects", "Publications", "Education"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
               onClick={(e) => scrollToSection(e, item.toLowerCase())}
-              className="text-base font-medium text-[#E4E6EB] hover:text-primary transition-colors relative group font-sans"
+              className="text-base font-medium text-foreground hover:text-primary transition-colors relative group font-sans"
             >
               {item}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>

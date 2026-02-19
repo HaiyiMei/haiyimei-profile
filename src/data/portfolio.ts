@@ -2,6 +2,7 @@ export interface PortfolioData {
   personal: {
     name: string;
     avatar: string; // path to image
+    heroImage?: string; // Optional custom hero image
     role: string[];
     bio: string;
     social: {
@@ -23,6 +24,14 @@ export interface PortfolioData {
     companyUrl: string;
     date: string;
     description: string;
+  }[];
+  education: {
+    school: string;
+    degree: string;
+    date: string;
+    imageUrl?: string;
+    description: string;
+    schoolUrl: string;
   }[];
   projects: {
     title: string;
@@ -141,6 +150,29 @@ I'm proficient in crafting advanced technology demonstration videos.`
 
 Had the experience of reproducing the SOTA methods in video captioning.
 [<i class="fa-brands fa-github"></i> Code](https://github.com/HaiyiMei/s2vt_transformer)`
+    }
+  ],
+  education: [
+    {
+      school: "Shandong University",
+      degree: "Master of Biomedical/Medical Engineering",
+      date: "2019 - 2022",
+      schoolUrl: "https://en.sdu.edu.cn/",
+      description: `I Published:
+- <i class="fa-regular fa-lightbulb"></i> Patent filed with CNIPA: [CN114429436A](https://patents.google.com/patent/CN114429436A).`
+    },
+    {
+      school: "Nanjing University of Science and Technology",
+      degree: "Bachelor of Automation",
+      date: "2015 - 2019",
+      schoolUrl: "https://english.njust.edu.cn/",
+      description: `I Published:
+- <i class="fa-regular fa-lightbulb"></i> Patent filed with CNIPA: [CN108453742B](https://patents.google.com/patent/CN108453742B).
+- <i class="fa-regular fa-file-lines"></i> Mian ZHANG, Ying HUANG, **Haiyi MEI**, Yu GUO. Intelligent interaction method for power distribution robot based on Kinect. Journal of Shandong University(Engineering Science), 2018, 48(5): 103-108.
+
+Extracurricular Activities
+- <i class="fa-solid fa-music"></i> Head of the Symphony Orchestra of School, 2016 - 2018.
+- <i class="fa-solid fa-music"></i> First Place Award, National University Piano Competition, Chinese Golden Bell Award for Music, 2017.`
     }
   ],
   projects: [
