@@ -7,39 +7,43 @@ export default {
   ],
   theme: {
   	extend: {
+      fontFamily: {
+        sans: ['"Alata"', 'sans-serif'],
+        serif: ['"Lora"', 'serif'],
+      },
   		colors: {
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
+  			background: '#18191A', // Extracted
+  			foreground: '#E4E6EB', // Extracted
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  				DEFAULT: '#8ABECC', // Extracted
+  				foreground: '#18191A'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
-  				foreground: 'hsl(var(--secondary-foreground))'
+  				DEFAULT: '#0D6EFD', // Extracted
+  				foreground: '#FFFFFF'
   			},
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
   			muted: {
-  				DEFAULT: 'hsl(var(--muted))',
-  				foreground: 'hsl(var(--muted-foreground))'
+  				DEFAULT: '#242526', // Slightly lighter than bg
+  				foreground: '#B0B3B8'
   			},
   			accent: {
-  				DEFAULT: 'hsl(var(--accent))',
-  				foreground: 'hsl(var(--accent-foreground))'
+  				DEFAULT: '#8ABECC',
+  				foreground: '#18191A'
   			},
   			popover: {
-  				DEFAULT: 'hsl(var(--popover))',
-  				foreground: 'hsl(var(--popover-foreground))'
+  				DEFAULT: '#242526',
+  				foreground: '#E4E6EB'
   			},
   			card: {
-  				DEFAULT: 'hsl(var(--card))',
-  				foreground: 'hsl(var(--card-foreground))'
+  				DEFAULT: 'rgba(255, 255, 255, 0.05)', // Extracted
+  				foreground: '#E4E6EB'
   			}
   		},
   		borderRadius: {
@@ -47,6 +51,13 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+      container: {
+        center: true,
+        padding: '2rem',
+        screens: {
+          "2xl": "1320px",
+        },
+      },
   		keyframes: {
   			'accordion-down': {
   				from: {

@@ -1,40 +1,50 @@
 import { portfolioData } from "@/data/portfolio";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ReactMarkdown from "react-markdown";
 
 export function Experience() {
   const { experience } = portfolioData;
 
   return (
-    <section id="experience" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 text-center">Experience</h2>
-        <div className="max-w-4xl mx-auto space-y-8">
-          {experience.map((item, index) => (
-            <Card key={index} className="overflow-hidden">
-              <CardHeader className="bg-background/50">
-                <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
-                  <div>
-                    <CardTitle className="text-xl font-bold">{item.role}</CardTitle>
-                    <CardDescription className="text-lg mt-1">
-                      <a href={item.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors font-medium text-foreground">
-                        {item.company}
-                      </a>
-                    </CardDescription>
+    <section id="experience" className="py-24 bg-[#18191A] text-[#E4E6EB]">
+      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
+        <h2 className="text-3xl font-bold mb-12 font-sans text-center md:text-left relative inline-block">
+          Where I've Worked
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-[#242526] rounded-full"></span>
+          <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-[#8ABECC] rounded-full"></span>
+        </h2>
+
+        <div className="mt-8">
+          <Tabs defaultValue={experience[0].company} orientation="vertical" className="flex flex-col md:flex-row gap-8 md:gap-12">
+            <TabsList className="flex md:flex-col h-auto bg-transparent justify-start items-start p-0 w-full md:w-64 space-y-0 md:space-y-0 overflow-x-auto md:overflow-visible no-scrollbar border-b md:border-b-0 md:border-l border-[#242526]">
+              {experience.map((item) => (
+                <TabsTrigger
+                  key={item.company}
+                  value={item.company}
+                  className="w-full justify-start px-6 py-3 text-base font-sans text-[#B0B3B8] border-l-2 border-transparent data-[state=active]:bg-[#8ABECC]/5 data-[state=active]:text-[#8ABECC] data-[state=active]:border-[#8ABECC] rounded-none transition-all duration-300 hover:bg-[#242526] hover:text-[#E4E6EB] whitespace-nowrap shadow-none"
+                >
+                  {item.company}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            <div className="flex-1 min-h-[400px]">
+              {experience.map((item) => (
+                <TabsContent key={item.company} value={item.company} className="mt-0 animate-in fade-in slide-in-from-right-4 duration-500 ring-offset-0 focus-visible:ring-0">
+                  <div className="space-y-2 mb-6">
+                    <h3 className="text-2xl font-bold font-sans text-[#E4E6EB]">
+                      {item.role} <span className="text-[#8ABECC]">@ <a href={item.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">{item.company}</a></span>
+                    </h3>
+                    <p className="text-sm font-mono text-[#B0B3B8]">{item.date}</p>
                   </div>
-                  <Badge variant="secondary" className="w-fit text-sm py-1">
-                    {item.date}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="prose dark:prose-invert max-w-none prose-sm">
-                  <ReactMarkdown>{item.description}</ReactMarkdown>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+
+                  <div className="prose prose-invert max-w-none text-[#B0B3B8] font-serif prose-headings:text-[#E4E6EB] prose-headings:font-sans prose-strong:text-[#E4E6EB] prose-a:text-[#8ABECC] prose-li:marker:text-[#8ABECC]">
+                    <ReactMarkdown>{item.description}</ReactMarkdown>
+                  </div>
+                </TabsContent>
+              ))}
+            </div>
+          </Tabs>
         </div>
       </div>
     </section>
