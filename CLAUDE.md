@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Repository Structure
+
+- `website/` — Personal website (Vite + React + TypeScript)
+- `resume/` — Resume source files (planned)
+- `notes/` — Notes and writing (planned)
+
 ## Package Management
 
 ### TypeScript: Use `bun` (never npm/yarn/pnpm)
