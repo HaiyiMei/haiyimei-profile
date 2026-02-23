@@ -1,83 +1,92 @@
 import { portfolioData } from "@/data/portfolio";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Database } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 
 export function Publications() {
   const { publications } = portfolioData;
 
   return (
-    <section id="publications" className="py-24 bg-background text-foreground">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <h2 className="text-3xl font-bold mb-12 font-sans text-center md:text-left relative inline-block">
-          Publications
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-muted rounded-full"></span>
-          <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-primary rounded-full"></span>
-        </h2>
+    <section id="publications" className="section-shell">
+      <div className="content-shell">
+        <h3 className="section-title">
+          Publications{" "}
+          <a
+            href={portfolioData.personal.social.scholar}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon inline-flex border-0 p-2 align-middle text-foreground"
+            aria-label="Google Scholar"
+          >
+            <GraduationCap className="h-5 w-5" />
+          </a>
+        </h3>
 
-        <div className="space-y-12">
-          {publications.map((highlight, index) => (
-            <div 
-              key={index} 
-              className="flex flex-col md:flex-row gap-8 items-start group"
-            >
-              <div className="w-full md:w-64 flex-shrink-0 overflow-hidden rounded-lg border border-muted group-hover:border-primary/50 transition-colors">
-                <img 
-                  src={highlight.imageUrl} 
-                  alt={highlight.title} 
-                  className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              
-              <div className="flex-grow space-y-3">
-                <h3 className="text-xl font-bold leading-tight font-sans text-foreground group-hover:text-primary transition-colors">
-                  {highlight.title}
-                </h3>
-                  
-                <div className="text-muted-foreground text-base font-serif leading-relaxed">
-                  {highlight.authors.map((author, i) => (
-                    <span key={i} className={author.isMe ? "text-foreground font-bold underline decoration-primary decoration-2 underline-offset-4" : ""}>
-                      {author.name}{i < highlight.authors.length - 1 ? ", " : ""}
-                    </span>
-                  ))}
-                </div>
+        <div className="narrow-shell mt-10 flex flex-col gap-4">
+          {publications.map((highlight) => {
+            const arxivMatch = highlight.paperUrl.match(/arxiv\.org\/abs\/(.+)$/);
+            const arxivBadge = arxivMatch ? `https://img.shields.io/badge/arXiv-${arxivMatch[1]}-b31b1b.svg?style=flat` : null;
 
-                <div className="items-center gap-4 text-sm font-medium text-primary">
-                    <span className="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">
-                        {highlight.venue}
-                    </span>
-                </div>
+            return (
+              <article key={highlight.title} className="section-card">
+                <div className="section-card-body">
+                <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
+                  <div className="md:col-span-4 flex flex-col items-center justify-center">
+                    <img src={highlight.imageUrl} alt={highlight.title} className="w-full max-w-[240px] rounded" />
+                    <div className="mt-3 flex flex-wrap justify-center gap-2">
+                      {highlight.codeUrl && (
+                        <a href={highlight.codeUrl} target="_blank" rel="noopener noreferrer">
+                          <img
+                            src={`https://img.shields.io/github/stars/${highlight.codeUrl.replace("https://github.com/", "")}`}
+                            alt={`${highlight.title} stars`}
+                          />
+                        </a>
+                      )}
+                      {arxivBadge && (
+                        <a href={highlight.paperUrl} target="_blank" rel="noopener noreferrer">
+                          <img src={arxivBadge} alt="arXiv badge" />
+                        </a>
+                      )}
+                    </div>
+                    <strong className="secondary-heading mt-2">{highlight.venue}</strong>
+                  </div>
 
-                <p className="text-muted-foreground font-serif text-sm">
-                  {highlight.description}
-                </p>
-                
-                <div className="flex gap-4 pt-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    asChild
-                    className="border-muted text-muted-foreground hover:text-primary hover:border-primary hover:bg-transparent"
-                  >
-                    <a href={highlight.paperUrl} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" /> Paper
-                    </a>
-                  </Button>
-                  {highlight.codeUrl && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      asChild
-                      className="border-muted text-muted-foreground hover:text-primary hover:border-primary hover:bg-transparent"
-                    >
-                      <a href={highlight.codeUrl} target="_blank" rel="noopener noreferrer">
-                        <Database className="mr-2 h-4 w-4" /> Code
+                  <div className="md:col-span-8">
+                    <h3 className="secondary-heading text-[1.25rem] font-medium leading-[1.2]">{highlight.title}</h3>
+                    <p className="markdown-body mt-2 text-[0.95rem] leading-7">
+                      {highlight.authors.map((author, i) => (
+                        <span key={`${author.name}-${i}`} className={author.isMe ? "font-semibold underline decoration-primary decoration-2 underline-offset-4" : ""}>
+                          {author.name}
+                          {i < highlight.authors.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </p>
+                    <p className="markdown-body mt-3 text-[0.95rem]">{highlight.description}</p>
+
+                    <div className="mt-4 flex flex-wrap gap-3">
+                      <a
+                        href={highlight.paperUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hero-button inline-flex items-center gap-2 px-4 py-1.5 text-sm"
+                      >
+                        Paper
                       </a>
-                    </Button>
-                  )}
+                      {highlight.codeUrl && (
+                        <a
+                          href={highlight.codeUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hero-button inline-flex items-center gap-2 px-4 py-1.5 text-sm"
+                        >
+                          Code
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

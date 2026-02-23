@@ -1,14 +1,38 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { portfolioData } from "@/data/portfolio";
+
+const NAV_ITEMS = [
+  { id: "about", label: "About Me" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Open-Source Projects" },
+  { id: "publications", label: "Publications" },
+  { id: "education", label: "Education" },
+  { id: "contact", label: "Contact" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 8);
+
+      const checkpoint = window.scrollY + 140;
+      let current = "";
+      for (const item of NAV_ITEMS) {
+        const section = document.getElementById(item.id);
+        if (!section) {
+          continue;
+        }
+        if (section.offsetTop <= checkpoint) {
+          current = item.id;
+        }
+      }
+      setActiveSection(current);
     };
+
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -20,47 +44,39 @@ export function Navbar() {
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-  
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
       });
+      setActiveSection(id);
     }
   };
 
   return (
-    <nav
+    <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4",
-        isScrolled
-          ? "bg-background/95 backdrop-blur-sm shadow-md py-2" // Matches site dark theme
-          : "bg-transparent"
+        "site-header transition-all duration-300 ease-in-out",
+        isScrolled && "scrolled"
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a 
-          href="#" 
-          onClick={(e) => scrollToSection(e, "hero")}
-          className="text-2xl font-bold tracking-wider hover:text-primary transition-colors font-sans"
-        >
-          {portfolioData.personal.name}
-        </a>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-8">
-          {["About", "Experience", "Projects", "Publications", "Education"].map((item) => (
+      <nav className="content-shell flex h-[80px] items-center">
+        <div className="site-nav">
+          {NAV_ITEMS.map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              onClick={(e) => scrollToSection(e, item.toLowerCase())}
-              className="text-base font-medium text-foreground hover:text-primary transition-colors relative group font-sans"
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => scrollToSection(e, item.id)}
+              className={cn(
+                "site-nav-link",
+                activeSection === item.id && "nav-active"
+              )}
             >
-              {item}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full"></span>
+              {item.label}
             </a>
           ))}
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

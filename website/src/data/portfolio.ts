@@ -1,6 +1,7 @@
 export interface PortfolioData {
   personal: {
     name: string;
+    subtitle?: string;
     avatar: string; // path to image
     heroImage?: string; // Optional custom hero image
     role: string[];
@@ -52,11 +53,19 @@ export interface PortfolioData {
     imageUrl: string;
     description: string;
   }[];
+  contact: {
+    title: string;
+    description: string;
+    emailText: string;
+    emailHref: string;
+    buttonText: string;
+  };
 }
 
 export const portfolioData: PortfolioData = {
   personal: {
     name: "Haiyi Mei",
+    subtitle: "梅海艺",
     avatar: "/images/avatar.png",
     role: [
       "Agentic AI Engineer",
@@ -67,13 +76,50 @@ export const portfolioData: PortfolioData = {
       "Game Developer",
       "Amateur Musician"
     ],
-    bio: `I'm a committed algorithm researcher and backend engineer with 4+ years of industry experience. Specializing in 3D synthetic data generation for computer vision tasks, I have contributed to 10 papers in top-tier conferences and journals.
+    bio: `👋
+I'm a committed algorithm researcher and backend engineer with 4+ years of industry experience.
+Specializing in 3D synthetic data generation for computer vision tasks,
+I have contributed to [10 papers](#publications) in top-tier conferences and journals.
 
-I'm well-versed in the text-to-video generation pipeline, contributing to VAE training, dataset preparation, automated annotation, and video acquisition using crawler techniques.
+I'm well-versed in the text-to-video generation pipeline,
+contributing to VAE training, dataset preparation, automated annotation, and video acquisition using crawler techniques.
 
-Beyond research, I'm passionate about developing autonomous AI agents, leveraging my backend expertise and cutting-edge LLMs to create intelligent, scalable solutions.
+Beyond research, I'm passionate about developing autonomous AI agents,
+leveraging my backend expertise and cutting-edge LLMs to create intelligent, scalable solutions.
 
-I thrive on pushing the boundaries of AI systems and automation.`,
+I thrive on pushing the boundaries of AI systems and automation.
+
+My expertise spans:
+- Engine tools development: Unreal Engine, Blender, etc.
+- Rendering techniques: PBR, differentiable rendering, NeRF, 3DGS, etc.
+- 3D computer vision: Novel view synthesis, generative models on 3D, etc.
+- Text/image-to-video generation: VAE, Diffusion models, dataset preparation (automated annotation, crawler techniques), etc.
+- Backend development: FastAPI, Flask, scalable robust system design, etc.
+- LLM and autonomous AI agents: LLM integration, prompt engineering, agentic framework, etc.
+- Open-source projects: CI/CD, Docker, Kubernetes, etc.
+
+Languages and tools I'm working with:
+
+[![Python](https://img.shields.io/badge/Python-3776AB.svg?logo=Python&logoColor=white)](https://www.python.org)
+[![C++](https://img.shields.io/badge/C++-00599C.svg?logo=c%2B%2B&logoColor=white)](https://www.w3schools.com/cpp/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6.svg?logo=TypeScript&logoColor=white)](https://www.typescriptlang.org/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?logo=PyTorch&logoColor=white)](https://pytorch.org/)
+[![LangChain](https://img.shields.io/badge/LangChain-1C3C3C.svg?logo=langchain&logoColor=white)](https://www.langchain.com/)
+[![Smolagents](https://img.shields.io/badge/Smolagents-FFD21E?logo=huggingface&logoColor=000)](https://huggingface.co/docs/smolagents/)
+[![Claude Agent SDK](https://img.shields.io/badge/Claude_Agent_SDK-D97757.svg?logo=anthropic&logoColor=white)](https://platform.claude.com/docs/en/agent-sdk/overview)
+<br>
+[![Unreal Engine](https://img.shields.io/badge/-Unreal%20Engine-0E1128?logo=unrealengine&logoColor=white)](https://unrealengine.com/)
+[![Blender](https://img.shields.io/badge/Blender-%23F5792A.svg?logo=Blender&logoColor=white)](https://www.blender.org/)
+[![PyTorch3D Badge](https://custom-icon-badges.demolab.com/badge/PyTorch3D-white.svg?logo=pytorch3d&logoColor=white)](https://pytorch3d.org/)
+[![Mitsuba Badge](https://custom-icon-badges.demolab.com/badge/Mitsuba-green.svg?logo=mitsuba&logoColor=white)](https://www.mitsuba-renderer.org/)
+<br>
+[![Docker](https://img.shields.io/badge/Docker-%232496ED.svg?logo=Docker&logoColor=white)](https://www.docker.com/)
+[![Flask](https://img.shields.io/badge/Flask-black.svg?logo=Flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688.svg?logo=FastAPI&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-%23326CE5.svg?logo=Kubernetes&logoColor=white)](https://kubernetes.io)
+[![Git](https://img.shields.io/badge/Git-%23F05033.svg?logo=Git&logoColor=white)](https://git-scm.com/)
+[![Linux](https://img.shields.io/badge/Linux-%23FCC624.svg?logo=Linux&logoColor=black)](https://www.linux.org/)
+[![LaTex](https://img.shields.io/badge/LaTeX-%23008080.svg?logo=LaTeX&logoColor=white)](https://www.latex-project.org/)`,
     social: {
       github: "https://github.com/HaiyiMei",
       linkedin: "https://linkedin.com/in/haiyimei/",
@@ -159,7 +205,7 @@ Had the experience of reproducing the SOTA methods in video captioning.
       date: "2019 - 2022",
       schoolUrl: "https://en.sdu.edu.cn/",
       description: `I Published:
-- <i class="fa-regular fa-lightbulb"></i> Patent filed with CNIPA: [CN114429436A](https://patents.google.com/patent/CN114429436A).`
+- 💡 Patent filed with CNIPA: [CN114429436A](https://patents.google.com/patent/CN114429436A).`
     },
     {
       school: "Nanjing University of Science and Technology",
@@ -167,18 +213,23 @@ Had the experience of reproducing the SOTA methods in video captioning.
       date: "2015 - 2019",
       schoolUrl: "https://english.njust.edu.cn/",
       description: `I Published:
-- <i class="fa-regular fa-lightbulb"></i> Patent filed with CNIPA: [CN108453742B](https://patents.google.com/patent/CN108453742B).
-- <i class="fa-regular fa-file-lines"></i> Mian ZHANG, Ying HUANG, **Haiyi MEI**, Yu GUO. Intelligent interaction method for power distribution robot based on Kinect. Journal of Shandong University(Engineering Science), 2018, 48(5): 103-108.
+- 💡 Patent filed with CNIPA: [CN108453742B](https://patents.google.com/patent/CN108453742B).
+- 📄 Mian ZHANG, Ying HUANG, **Haiyi MEI**, Yu GUO. Intelligent interaction method for power distribution robot based on Kinect. Journal of Shandong University(Engineering Science), 2018, 48(5): 103-108.
 
 Extracurricular Activities
-- <i class="fa-solid fa-music"></i> Head of the Symphony Orchestra of School, 2016 - 2018.
-- <i class="fa-solid fa-music"></i> First Place Award, National University Piano Competition, Chinese Golden Bell Award for Music, 2017.`
+- 🎵 Head of the Symphony Orchestra of School, 2016 - 2018.
+- 🎵 First Place Award, National University Piano Competition, Chinese Golden Bell Award for Music, 2017.`
     }
   ],
   projects: [
     {
-      title: "XRFeitoria",
-      description: "Rendering Toolbox for Synthetic Data Generation. Control over engine (UE/Blender) through RPC using system python. Support multiple engine backends. Render photorealistic images with ground-truth annotations.",
+      title: "XRFeitoria: Rendering Toolbox for Synthetic Data Generation",
+      description: `- Control over engine (UE/Blender) through RPC using system python.
+- Support multiple engine backends, including Unreal Engine and Blender.
+- Render photorealistic images with ground-truth annotations.
+- Manage assets/cameras, including import, place, export, and delete.
+- CLI tools to render images from a mesh file.
+- Streamline building rendering pipelines across various domains, effectively implemented in over **8 projects**.`,
       imageUrl: "/images/projects/XRFeitoria_small.gif",
       projectUrl: "https://xrfeitoria.readthedocs.io",
       repoUrl: "https://github.com/openxrlab/xrfeitoria",
@@ -430,5 +481,12 @@ Extracurricular Activities
       codeUrl: "https://github.com/skhu101/HumanLiff",
       description: "HumanLiff learns the layer-wise 3D human generative model with a unified diffusion process."
     }
-  ]
+  ],
+  contact: {
+    title: "Get in Touch",
+    description: "🥳 Contact me for any questions or want to collaborate! Always open to new opportunities.",
+    emailText: "haiyimei [at] gmail.com",
+    emailHref: "mailto:haiyimei@gmail.com",
+    buttonText: "Mail me"
+  }
 };

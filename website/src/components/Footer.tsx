@@ -1,17 +1,24 @@
-import { portfolioData } from "@/data/portfolio";
-
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-  
+  const updatedOn = new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date());
+
   return (
-    <footer className="bg-background py-12 border-t border-muted text-muted-foreground">
-      <div className="container mx-auto px-4 text-center space-y-4">
-        <p className="font-serif text-sm">
-            Based on <a href="https://github.com/gurusabarish/hugo-profile" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Hugo Profile</a> theme.
-        </p>
-        <p className="font-sans text-xs opacity-60">
-          © {currentYear} {portfolioData.personal.name}. All rights reserved.
-        </p>
+    <footer className="bg-[var(--background-color)]">
+      <div className="content-shell py-8">
+        <div className="mx-auto w-full max-w-md text-center">
+          <div className="pb-2">
+            <a href="#hero" aria-label="Back to top">
+              <img src="/images/avatar.png" alt="Footer logo" className="h-10 w-10" />
+            </a>
+          </div>
+          <p className="secondary-heading text-sm">Updated: {updatedOn}</p>
+          <div className="secondary-heading text-sm">
+            Made with <span className="text-red-500">❤</span> by Haiyi
+          </div>
+        </div>
       </div>
     </footer>
   );

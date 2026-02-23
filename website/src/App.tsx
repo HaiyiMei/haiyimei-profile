@@ -5,11 +5,12 @@ import { Experience } from "@/components/Experience";
 import { Projects } from "@/components/Projects";
 import { Publications } from "@/components/Publications";
 import { Education } from "@/components/Education";
+import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans antialiased overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
       <Navbar />
       <Hero />
       <About />
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <Publications />
       <Education />
+      <Contact />
       <Footer />
     </div>
   )

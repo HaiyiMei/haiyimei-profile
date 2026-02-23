@@ -1,83 +1,73 @@
 import { portfolioData } from "@/data/portfolio";
-import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink } from "lucide-react";
+import { Github } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 
 export function Projects() {
   const { projects } = portfolioData;
 
   return (
-    <section id="projects" className="py-24 bg-background text-foreground">
-      <div className="container mx-auto px-6 md:px-12 max-w-6xl">
-        <h2 className="text-3xl font-bold mb-12 font-sans text-center md:text-left relative inline-block">
-          Open Source Projects
-          <span className="absolute bottom-0 left-0 w-full h-1 bg-muted rounded-full"></span>
-          <span className="absolute bottom-0 left-0 w-1/3 h-1 bg-primary rounded-full"></span>
-        </h2>
+    <section id="projects" className="section-shell">
+      <div className="content-shell">
+        <h3 className="section-title">
+          Open-Source Projects{" "}
+          <a
+            href={portfolioData.personal.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-icon inline-flex border-0 p-2 align-middle text-foreground"
+            aria-label="GitHub profile"
+          >
+            <Github className="h-5 w-5" />
+          </a>
+        </h3>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className="group bg-card rounded-xl overflow-hidden border border-muted hover:border-primary/50 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-xl"
-            >
-              <div className="relative aspect-video overflow-hidden">
-                <div className="absolute inset-0 bg-background/20 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title} 
-                  className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              
-              <div className="p-6 space-y-4">
-                <div className="flex justify-between items-start">
-                  <h3 className="text-xl font-bold font-sans text-foreground group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <div className="flex gap-3">
-                    {project.repoUrl && (
-                      <a 
-                        href={project.repoUrl} 
-                        target="_blank" 
+        <div className="narrow-shell mt-10 flex flex-col gap-4">
+          {projects.map((project) => {
+            const repoPath = project.repoUrl.replace("https://github.com/", "").replace(/\/$/, "");
+            const starsBadgeUrl = `https://img.shields.io/github/stars/${repoPath}`;
+
+            return (
+              <article key={project.title} className="section-card">
+                <div className="section-card-body">
+                <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-12">
+                  <div className="md:col-span-4 flex flex-col items-center justify-center">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full max-w-[240px] rounded"
+                    />
+                    <div className="mt-4 flex flex-wrap justify-center gap-2">
+                      {project.tags.map((tag) => (
+                        <span key={tag} className="rounded bg-background px-2 py-1 text-xs text-foreground">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="mt-3">
+                      <img src={starsBadgeUrl} alt={`${project.title} stars`} />
+                    </a>
+                  </div>
+
+                  <div className="md:col-span-8">
+                    <h3 className="secondary-heading text-base font-medium leading-[1.2]">
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="GitHub Repo"
+                        className="link-accent-inline !text-[var(--text-color)]"
                       >
-                        <Github className="w-5 h-5" />
+                        {project.title}
                       </a>
-                    )}
-                    {project.projectUrl && (
-                      <a 
-                        href={project.projectUrl} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                        aria-label="Live Demo"
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </a>
-                    )}
+                    </h3>
+                    <div className="markdown-body projects-markdown mt-2">
+                      <ReactMarkdown>{project.description}</ReactMarkdown>
+                    </div>
                   </div>
                 </div>
-
-                <p className="text-muted-foreground text-sm leading-relaxed font-serif line-clamp-3">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 pt-2">
-                  {project.tags.map((tag) => (
-                    <Badge 
-                      key={tag} 
-                      variant="outline" 
-                      className="text-xs font-normal text-primary border-primary/30 bg-primary/5"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
