@@ -1,5 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
-import { Mail } from "lucide-react";
+import { MdEmail } from "react-icons/md";
 
 export function Contact() {
   const { contact } = portfolioData;
@@ -13,7 +13,7 @@ export function Contact() {
             <div className="text-center">
               <p className="mx-auto max-w-[608px] text-base leading-6 text-[var(--text-color)]/90">{contact.description}</p>
               <p className="secondary-heading mt-4 inline-flex items-center gap-2">
-                <Mail className="h-4 w-4 text-[var(--primary-color)]" />
+                <MdEmail className="h-4 w-4 text-[var(--primary-color)]" />
                 {contact.emailText}
               </p>
             </div>

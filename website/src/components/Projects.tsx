@@ -1,5 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
-import { Github } from "lucide-react";
+import { FaGithub } from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
 
 export function Projects() {
@@ -17,7 +17,7 @@ export function Projects() {
             className="social-icon inline-flex border-0 p-2 align-middle text-foreground"
             aria-label="GitHub profile"
           >
-            <Github className="h-5 w-5" />
+            <FaGithub className="h-5 w-5" />
           </a>
         </h3>
 

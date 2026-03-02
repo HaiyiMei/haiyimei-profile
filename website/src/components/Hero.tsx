@@ -1,6 +1,9 @@
 import { ReactTyped } from "react-typed";
 import { portfolioData } from "@/data/portfolio";
-import { Github, Linkedin, Mail, Youtube, GraduationCap, MessageCircle } from "lucide-react";
+import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa6";
+import { SiOpenai } from "react-icons/si";
+import { FaGoogleScholar } from "react-icons/fa6";
+import { MdEmail } from "react-icons/md";
 
 export function Hero() {
   const { name, subtitle, role, social, heroImage } = portfolioData.personal;
@@ -39,23 +42,23 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="hero-button main-heading mt-[30px] inline-flex items-center gap-2 px-5 py-[0.45rem] text-base"
               >
-                Chat <MessageCircle className="h-4 w-4" />
+                Chat <SiOpenai className="h-4 w-4" />
               </a>
             </span>
             <span className="px-1">
-              <SocialLink href={social.github} icon={<Github className="h-[1.2em] w-[1.2em]" />} label="Github" />
+              <SocialLink href={social.github} icon={<FaGithub className="h-[1.2em] w-[1.2em]" />} label="Github" />
             </span>
             <span className="px-1">
-              <SocialLink href={social.linkedin} icon={<Linkedin className="h-[1.2em] w-[1.2em]" />} label="LinkedIn" />
+              <SocialLink href={social.linkedin} icon={<FaLinkedin className="h-[1.2em] w-[1.2em]" />} label="LinkedIn" />
             </span>
             <span className="px-1">
-              <SocialLink href={social.youtube} icon={<Youtube className="h-[1.2em] w-[1.2em]" />} label="YouTube" />
+              <SocialLink href={social.youtube} icon={<FaYoutube className="h-[1.2em] w-[1.2em]" />} label="YouTube" />
             </span>
             <span className="px-1">
-              <SocialLink href={social.scholar} icon={<GraduationCap className="h-[1.2em] w-[1.2em]" />} label="Scholar" />
+              <SocialLink href={social.scholar} icon={<FaGoogleScholar className="h-[1.2em] w-[1.2em]" />} label="Scholar" />
             </span>
             <span className="px-1">
-              <SocialLink href={social.email} icon={<Mail className="h-[1.2em] w-[1.2em]" />} label="Email" />
+              <SocialLink href={social.email} icon={<MdEmail className="h-[1.2em] w-[1.2em]" />} label="Email" />
             </span>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { portfolioData } from "@/data/portfolio";
-import { GraduationCap } from "lucide-react";
+import { FaGoogleScholar } from "react-icons/fa6";
 
 export function Publications() {
   const { publications } = portfolioData;
@@ -16,7 +16,7 @@ export function Publications() {
             className="social-icon inline-flex border-0 p-2 align-middle text-foreground"
             aria-label="Google Scholar"
           >
-            <GraduationCap className="h-5 w-5" />
+            <FaGoogleScholar className="h-5 w-5" />
           </a>
         </h3>
 
