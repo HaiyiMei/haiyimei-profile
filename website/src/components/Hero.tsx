@@ -4,9 +4,10 @@ import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa6";
 import { SiOpenai } from "react-icons/si";
 import { FaGoogleScholar } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import { AsciiDonutHero } from "@/components/AsciiDonutHero";
 
 export function Hero() {
-  const { name, subtitle, role, social, heroImage } = portfolioData.personal;
+  const { name, subtitle, role, social } = portfolioData.personal;
 
   return (
     <section id="hero" className="flex min-h-[calc(100vh-80px)] items-center py-0 leading-8">
@@ -63,15 +64,9 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-5 lg:-ml-4 flex justify-center lg:justify-center animate-in fade-in slide-in-from-right-5 duration-1000 delay-200">
-          <div className="w-full max-w-[350px] lg:max-w-[351px]">
-            <a href="https://space.bilibili.com/30424533" target="_blank" rel="noopener noreferrer">
-              <img
-                src={heroImage || "/images/avatar.png"}
-                alt={name}
-                className="hero-image w-full"
-              />
-            </a>
+        <div className="flex justify-center animate-in fade-in slide-in-from-right-5 duration-1000 delay-200 lg:col-span-5 lg:-ml-4 lg:justify-center">
+          <div className="w-full max-w-[380px] lg:max-w-[420px]">
+            <AsciiDonutHero />
           </div>
         </div>
       </div>
