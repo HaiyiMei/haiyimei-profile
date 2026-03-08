@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Development
+
+To run the website locally:
+```
+make website-dev
+```
+
+the website will be available at `http://localhost:5173` by default.
+
 ## Repository Structure
 
 - `website/` — Personal website (Vite + React + TypeScript)
