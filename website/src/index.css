@@ -217,6 +217,26 @@ img {
   padding: 0;
 }
 
+.site-nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.site-nav-toggle:hover,
+.site-nav-toggle:focus-visible {
+  color: var(--primary-color);
+  border-color: rgba(138, 190, 204, 0.36);
+  background-color: rgba(33, 37, 41, 0.9);
+  outline: none;
+}
+
 .site-nav-link {
   color: var(--text-color);
   font-family: "Alata", sans-serif;
@@ -237,6 +257,27 @@ img {
   color: var(--primary-color);
   font-weight: 700;
   box-shadow: inset 0 -2px 0 var(--primary-color);
+}
+
+.site-mobile-nav-link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-bottom: 0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+}
+
+.site-mobile-nav-link:hover,
+.site-mobile-nav-link:focus-visible {
+  background-color: rgba(33, 37, 41, 0.92);
+  border-bottom-color: transparent;
+  box-shadow: none;
+}
+
+.site-mobile-nav-link.nav-active {
+  background-color: rgba(33, 37, 41, 0.92);
+  box-shadow: none;
 }
 
 .contact-button {
