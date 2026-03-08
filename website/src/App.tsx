@@ -10,7 +10,7 @@ import { Footer } from "@/components/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
       <About />

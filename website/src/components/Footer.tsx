@@ -14,8 +14,8 @@ export function Footer() {
               <img src="/images/avatar.png" alt="Footer logo" className="h-10 w-10 mx-auto" />
             </a>
           </div>
-          <p className="secondary-heading text-sm">Updated: {updatedOn}</p>
-          <div className="secondary-heading text-sm">
+          <p className="secondary-heading text-base">Updated: {updatedOn}</p>
+          <div className="secondary-heading text-base">
             Made with <span className="text-red-500">❤</span> by Haiyi
           </div>
         </div>

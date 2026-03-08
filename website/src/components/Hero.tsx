@@ -11,13 +11,13 @@ export function Hero() {
   return (
     <section id="hero" className="flex min-h-[calc(100vh-80px)] items-center py-0 leading-8">
       <div className="content-shell grid grid-cols-1 items-center gap-8 lg:-mt-4 lg:grid-cols-12">
-        <div className="lg:col-span-7 text-center lg:text-left animate-in fade-in slide-in-from-bottom-5 duration-1000">
+        <div className="main-heading lg:col-span-7 text-center lg:text-left animate-in fade-in slide-in-from-bottom-5 duration-1000">
           <span className="main-heading text-[clamp(16px,5vw,20px)] opacity-60">Hi, my name is</span>
-          <h2 className="main-heading link-accent text-[clamp(3rem,8vw,5.625rem)] font-medium leading-[1.1]">
+          <h2 className="main-heading link-accent text-[clamp(3rem,8vw,5.625rem)] font-medium leading-[1.2]">
             {name}
           </h2>
           {subtitle && (
-            <h3 className="main-heading text-[clamp(3rem,8vw,4.375rem)] font-medium leading-[1.1] opacity-50">
+            <h3 className="main-heading text-[clamp(3rem,8vw,4.375rem)] font-medium leading-[1.2] opacity-50">
               {subtitle}
             </h3>
           )}
